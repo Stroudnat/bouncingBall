@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balls</title>
+  <!-- <link rel="stylesheet" href="bootstrap.css"> -->
+  <link rel="stylesheet" href="moveBall.css">
+  
+</head>
+<body>
+  <h1>Nate Stroud</h1>
+  <button onclick="moveBall()">Start</button>
+  
+  
+  <div id='box'
+  style='
+  width: 570px;
+  height: 470px;
+  border: 1px solid #4F5D75;
+  margin-left: 90px;
+  top: 100px' >
+  </div>
+  <div id="ball" 
+  style="
+  z-index:5;
+  position:absolute;
+  left:100px;
+  top:100px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:green"></div>
+
+<script>
+
+var xVelocity = 4;
+var yVelocity = 2;
+var xPosition = 100;
+var yPosition = 100;
+var ball = document.getElementById('ball');
+var xReverse = false;
+var yReverse = false;
+var xMax = 600;
+var xMin = 100;
+var yMax = 500;
+var yMin = 100;
+// YOUR CODE 
+// ----------------
+function colorRandomizer(){
+  var options = '0123456789abcdef';
+  var color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += options[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+
+function moveBall() {
+  if (xReverse){
+    xPosition -= xVelocity;
+  } else {
+    xPosition += xVelocity;
+  }
+
+  if(xPosition > xMax || 
+    xPosition === xMin) {
+    xReverse = !xReverse;
+    ball.style.background = colorRandomizer();
+    ball.style.width = 70 + 'px';
+    ball.style.height = 70 + 'px';
+  }
+ball.style.left = xPosition + 'px';
+ball.style.left = xPosition + 'px';
+  
+  if (yReverse){
+    yPosition -= yVelocity;
+    
+    
+  } else {
+    yPosition += yVelocity;
+  }
+
+  if(yPosition > yMax || 
+    yPosition === yMin){
+    yReverse = !yReverse;
+    ball.style.background = colorRandomizer();
+    ball.style.width = 40 + 'px';
+    ball.style.height = 40 + 'px';
+  }
+  ball.style.top = yPosition + 'px';
+  ball.style.top = yPosition + 'px';
+  
+  setTimeout(moveBall, 10);
+}
+
+
+</script>
+
+<script></script>
+</body>
+</html>
+
